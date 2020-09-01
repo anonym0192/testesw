@@ -9,3 +9,10 @@ if('serviceWorker' in navigator ){
 			});
 		}
 }
+
+setTimeout(function(){
+	var img = new Image();
+	img.src = "img/doomsday.jpg";
+
+	document.body.appendChild(img);
+}, 3000);

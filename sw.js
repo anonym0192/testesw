@@ -3,7 +3,7 @@ self.addEventListener('install', function(event){
 	self.skipWaiting();
 
 	event.waitUntil(caches.open('teste-v1').then(cache => {
-		cache.add('fox.jpg');
+		cache.add('img/fox.jpg');
 	}));
 
 });
@@ -20,7 +20,7 @@ self.addEventListener('fetch', function(event){
 	console.log("pathname :"+url.pathname);
 	console.log("Request URL :"+event.request.url);
 
-	if(location.origin == url.origin && url.pathname == '/testesw/doomsday.jpg'){
-		event.respondWith(caches.match('/testesw/fox.jpg'));
+	if(location.origin == url.origin && url.pathname == '/testesw/'){
+		event.respondWith(caches.match('/testesw/img/fox.jpg'));
 	}
 });
