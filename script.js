@@ -1,4 +1,4 @@
-if('serviceWorker' in navigator ){
+if('serviceWorker' in navigator && 'Notification' in window){
 
 	window.onload = function(){
 		navigator.serviceWorker.register('/testesw/sw.js')
@@ -6,6 +6,14 @@ if('serviceWorker' in navigator ){
 				console.log("Service worker successfully registered");
 			}, function(error){
 				console.error('Ocorreu um erro ao registrar o service Worker: \n'+error);
+			});
+
+			Notification.requestPermission().then(permission => {
+				if(permission == "granted"){
+					console.log('Granted!');
+				}else{
+					console.log('Not allowed')
+				}
 			});
 		}
 }

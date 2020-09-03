@@ -16,12 +16,18 @@ self.addEventListener('fetch', function(event){
 
 	const url = new URL(event.request.url);
 
-	console.log("domain :"+url.origin);
-	console.log("pathname :"+url.pathname);
-	console.log("Request URL :"+event.request.url);
-
 	if(location.origin == url.origin && url.pathname == '/testesw/img/doomsday.jpg'){
 		event.respondWith(caches.match('/testesw/img/fox.jpg'));
 		console.log(event.request.url);
 	}
+});
+
+self.addEventListener('push', function(event){
+	event.waitUntil(
+		self.registration.showNotification("Fox Notification", 
+		{
+			body: 'The beauty is coming',
+			icon: 'img/fox.jpg'
+		})
+		);
 });
