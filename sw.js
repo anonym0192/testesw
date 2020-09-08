@@ -26,7 +26,7 @@ self.addEventListener('push', function(event){
 	event.waitUntil(
 		self.registration.showNotification("Fox Notification", 
 		{
-			body: 'The beauty is coming',
+			body: event.data.text(),
 			icon: 'img/fox.jpg'
 		})
 		);
