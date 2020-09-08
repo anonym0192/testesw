@@ -1,4 +1,4 @@
-const parser = require('./helpers/urlBase64ToUint8Array.js')
+const parser = require('helpers/urlBase64ToUint8Array.js');
 
 if('serviceWorker' in navigator && 'Notification' in window){
 
@@ -18,7 +18,7 @@ if('serviceWorker' in navigator && 'Notification' in window){
 					userVisibleOnly: true,
       				applicationServerKey
 				};
-
+				
 				registrator.subscribe(options).then(function(subscription){
 
 					console.info(subscription);
@@ -34,7 +34,7 @@ if('serviceWorker' in navigator && 'Notification' in window){
 
 				}, function(err){
 					console.error(err.message);
-				});
+				}); */
 
 			});
 
