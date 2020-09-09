@@ -34,7 +34,7 @@ if('serviceWorker' in navigator && 'Notification' in window){
 
 				}, function(err){
 					console.error(err.message);
-				}); */
+				});
 
 			});
 
