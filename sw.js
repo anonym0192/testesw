@@ -27,7 +27,22 @@ self.addEventListener('push', function(event){
 		self.registration.showNotification("Fox Notification", 
 		{
 			body: event.data.text(),
-			icon: 'img/fox.jpg'
+			icon: 'img/fox.jpg',
+			requireInteraction: true,
+			data: {
+				id: 666,
+				url: 'https://www.youtube.com/watch?v=5Jbo0dTgeos';
+			}
 		})
 		);
 });
+
+self.addEventListener('notificationclick', function(event){
+
+		console.log('notification click');
+		console.log(event.notification.data);
+
+		event.notification.close();
+		clients.openWindow(event.notification.data.url);
+});
+
