@@ -31,7 +31,7 @@ self.addEventListener('push', function(event){
 			requireInteraction: true,
 			data: {
 				id: 666,
-				url: 'https://www.youtube.com/watch?v=5Jbo0dTgeos';
+				url: 'https://www.youtube.com/watch?v=5Jbo0dTgeos'
 			}
 		})
 		);
