@@ -53,16 +53,18 @@ self.addEventListener('notificationclick', function(event){
 		console.log(notificationData);
 		console.log(event.notification.data);
 
-		const url = event.notification.data.url || event.notification.data.nostalgicMusic
+		const url = notificationData.url || notificationData.nostalgicMusic
+
+		console.log(event.action);
 
 		switch(event.action){
 
 			case 'file':
-				console.info("The e-mail was filed,  id : "+event.notification.data.id);
+				console.info("The e-mail was filed,  id : "+notificationData.id);
 			break;
 
 			case 'read':
-				console.info("Marked as read, id: "+event.notification.data.id); 
+				console.info("Marked as read, id: "+notificationData.id); 
 			break;
 
 			default:

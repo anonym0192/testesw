@@ -31,9 +31,7 @@ if('serviceWorker' in navigator && 'Notification' in window){
       				applicationServerKey
 				};
 				
-				registrator.subscribe(options).then(function(subscription){
-
-					console.info(subscription);
+				registrator.pushManager.subscribe(options).then(function(subscription){
 
 					fetch('',{
 						method: 'post',
