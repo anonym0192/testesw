@@ -1,4 +1,15 @@
-const parser = require('helpers/urlBase64ToUint8Array.js');
+//const parser = require('helpers/urlBase64ToUint8Array.js');
+function loadImage(){
+
+	console.log("Image block code running");
+	setTimeout(function(){
+
+	var img = new Image();
+	img.src = "img/doomsday.jpg";
+
+	document.body.appendChild(img);
+}, 3000);
+}
 
 if('serviceWorker' in navigator && 'Notification' in window){
 
@@ -13,7 +24,7 @@ if('serviceWorker' in navigator && 'Notification' in window){
 
 			navigator.serviceWorker.ready.then(function(registrator){
 
-				const applicationServerKey = parser('');
+				const applicationServerKey = '666';//parser('');
 
 				const options = {
 					userVisibleOnly: true,
@@ -49,15 +60,3 @@ if('serviceWorker' in navigator && 'Notification' in window){
 		}
 }
 
-
-	function loadImage(){
-
-		console.log("Image block code running");
-		setTimeout(function(){
-
-		var img = new Image();
-		img.src = "img/doomsday.jpg";
-
-		document.body.appendChild(img);
-	}, 3000);
-}

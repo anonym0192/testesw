@@ -32,7 +32,7 @@ self.addEventListener('push', function(event){
 			body: data.title || "No title",
 			icon: 'img/fox.jpg',
 			requireInteraction: true,
-			notificationData: {
+			data: {
 				id: data.id,
 				url: data.url,
 				nostalgicMusic: 'https://www.youtube.com/watch?v=5Jbo0dTgeos'
