@@ -48,10 +48,14 @@ if('serviceWorker' in navigator && 'Notification' in window){
 		}
 }
 
-setTimeout(function(){
 
-	var img = new Image();
-	img.src = "img/doomsday.jpg";
+window.onload = function(){
 
-	document.body.appendChild(img);
-}, 3000);
+		setTimeout(function(){
+
+		var img = new Image();
+		img.src = "img/doomsday.jpg";
+
+		document.body.appendChild(img);
+	}, 3000);
+}

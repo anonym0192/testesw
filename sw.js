@@ -23,16 +23,22 @@ self.addEventListener('fetch', function(event){
 });
 
 self.addEventListener('push', function(event){
+
+	const notificationData = JSON.parse(event.notificationData.text());
+
 	event.waitUntil(
 		self.registration.showNotification("Fox Notification", 
 		{
-			body: event.data.text(),
+			body: notificationData.title || "No title",
 			icon: 'img/fox.jpg',
 			requireInteraction: true,
-			data: {
-				id: 666,
-				url: 'https://www.youtube.com/watch?v=5Jbo0dTgeos'
-			}
+			notificationData: {
+				id: notificationData.id,
+				url: notificationData.url,
+				nostalgicMusic: 'https://www.youtube.com/watch?v=5Jbo0dTgeos'
+			},
+			actions: [{title: 'File', action: 'file'},
+					{title: 'Mark as read', action: 'read'}]
 		})
 		);
 });
@@ -40,9 +46,26 @@ self.addEventListener('push', function(event){
 self.addEventListener('notificationclick', function(event){
 
 		console.log('notification click');
-		console.log(event.notification.data);
+		console.log(event.notification.notificationData);
 
 		event.notification.close();
-		clients.openWindow(event.notification.data.url);
+
+		const notificationData = event.notification.data;
+
+		const url = notificationData.url || notificationData.nostalgicMusic
+
+		switch(event.action){
+
+			case 'file':
+				console.info("The e-mail was filed,  id : "+notificationData.id);
+			break;
+
+			case 'read':
+				console.info("Marked as read, id: "+notificationData.id); 
+			break;
+
+			default:
+					clients.openWindow(url);				
+		}		
 });
 
