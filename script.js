@@ -51,6 +51,7 @@ if('serviceWorker' in navigator && 'Notification' in window){
 
 window.onload = function(){
 
+		console.log("Image block code running");
 		setTimeout(function(){
 
 		var img = new Image();

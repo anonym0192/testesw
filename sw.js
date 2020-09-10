@@ -24,17 +24,17 @@ self.addEventListener('fetch', function(event){
 
 self.addEventListener('push', function(event){
 
-	const notificationData = JSON.parse(event.notificationData.text());
+	const data = JSON.parse(event.data.text());
 
 	event.waitUntil(
 		self.registration.showNotification("Fox Notification", 
 		{
-			body: notificationData.title || "No title",
+			body: data.title || "No title",
 			icon: 'img/fox.jpg',
 			requireInteraction: true,
 			notificationData: {
-				id: notificationData.id,
-				url: notificationData.url,
+				id: data.id,
+				url: data.url,
 				nostalgicMusic: 'https://www.youtube.com/watch?v=5Jbo0dTgeos'
 			},
 			actions: [{title: 'File', action: 'file'},
@@ -45,9 +45,7 @@ self.addEventListener('push', function(event){
 
 self.addEventListener('notificationclick', function(event){
 
-		console.log('notification click');
-		console.log(event.notification.notificationData);
-
+		
 		event.notification.close();
 
 		const notificationData = event.notification.data;
