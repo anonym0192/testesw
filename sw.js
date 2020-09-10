@@ -24,7 +24,12 @@ self.addEventListener('fetch', function(event){
 
 self.addEventListener('push', function(event){
 
-	const data = JSON.parse(event.data.text());
+	let data; 
+	try{
+	 	data = JSON.parse(event.data.text());
+	}catch(e){
+		data = {};
+	}
 
 	event.waitUntil(
 		self.registration.showNotification("Fox Notification", 
