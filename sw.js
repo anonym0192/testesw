@@ -50,6 +50,8 @@ self.addEventListener('notificationclick', function(event){
 
 		const notificationData = event.notification.data;
 
+		console.log(notificationData);
+
 		const url = notificationData.url || notificationData.nostalgicMusic
 
 		switch(event.action){

@@ -3,6 +3,7 @@ const parser = require('helpers/urlBase64ToUint8Array.js');
 if('serviceWorker' in navigator && 'Notification' in window){
 
 	window.onload = function(){
+		loadImage();
 		navigator.serviceWorker.register('/testesw/sw.js')
 			.then(function(service){
 				console.log("Service worker successfully registered");
@@ -49,7 +50,7 @@ if('serviceWorker' in navigator && 'Notification' in window){
 }
 
 
-window.onload = function(){
+	function loadImage(){
 
 		console.log("Image block code running");
 		setTimeout(function(){
